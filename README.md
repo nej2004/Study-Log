@@ -1,68 +1,89 @@
-Study Log - feature/fact-feed
+# Study Log
 
-What I did (branch: feature/fact-feed)
+This repository contains the Android Java app "Study Log" (package: `com.example.studylog`).
 
-- Initialized a git repo and created branch `feature/fact-feed`.
-- Added the Fact Feed first feature (Member 1):
-  - `FactFeedActivity.java` (activity that fetches facts and displays them in a RecyclerView)
-  - `FactAdapter.java`, `Fact.java` (model + adapter)
-  - Layouts: `activity_fact_feed.xml`, `item_fact.xml`
-  - Wired `MainActivity` button (`btnFacts`) to open the Fact Feed.
-  - Registered `FactFeedActivity` in `AndroidManifest.xml`.
-- Updated `app/build.gradle.kts` to add dependencies for Volley (network), Picasso (image loading), and RecyclerView.
+This repo is prepared for team collaboration. The Fact Feed feature is implemented on branch `feature/fact-feed`. Use the guidance below to contribute safely.
 
-Important: Gradle sync/build required
+## Quick start (build & run)
+1. Open the project in Android Studio.
+2. If prompted, use the bundled JDK or set `JAVA_HOME` to a JDK 11/17.
+3. Click "Sync Project with Gradle Files" to download dependencies (Volley, Picasso, etc.).
+4. Build -> Make Project. Run on an emulator or device.
 
-- The project files are added, but the IDE/compiler will show unresolved references for Volley and Picasso until Gradle downloads the dependencies.
-- To resolve these, open the project in Android Studio and click "Sync Project with Gradle Files" (or use the menu Build > Make Project). Android Studio will download the new libraries and the errors will disappear.
+Command-line (Windows cmd.exe):
 
-Quick commands (Windows cmd.exe)
+```bat
+cd /d "C:\Users\user\AndroidStudioProjects\MyApp"
+gradlew.bat assembleDebug
+gradlew.bat installDebug   # installs on connected device/emulator
+```
 
-- Build (will download dependencies if internet is available):
+## What is implemented
+- MainActivity with BottomNavigationView and 4 fragments (Facts, Task Log, Contact, Profile)
+- FactFeedFragment (Volley + RecyclerView + Picasso placeholder images)
+- Adapter, model, layouts for the Fact feed
 
-  gradlew.bat assembleDebug
+## Branching & collaboration workflow (recommended)
+1. Create a remote GitHub repository and add it as `origin`.
+2. Each team member creates their own feature branch from `main` or `develop` (choose a primary branch):
+   - `feature/fact-feed` (already used for facts)
+   - `feature/task-log` (Member 2)
+   - `feature/contact` (Member 3)
+   - `feature/profile` (Member 4)
 
-- If you want to push the branch to a remote GitHub repo (after creating a remote and adding it):
+3. Work locally, commit often, and push branches to remote:
 
-  git remote add origin <your-repo-url>
-  git push -u origin feature/fact-feed
+```bat
+git checkout -b feature/task-log
+# work, add, commit
+git push -u origin feature/task-log
+```
 
-How the Fact Feed works (contract)
+4. Create a Pull Request (PR) on GitHub when ready. Use the PR template that exists in `.github/PULL_REQUEST_TEMPLATE.md`.
+5. Request at least one review. Merge after approval and CI checks.
 
-- Input: FactFeedActivity makes a GET request to https://api.sampleapis.com/futurama/quotes which returns a JSON array of objects like:
-  { "quote": "Some quote text", "character": "...", ... }
-- Output: RecyclerView list where each item shows the `quote` text and a placeholder image loaded from https://via.placeholder.com/150.
-- Error modes: On network failure a Toast is shown: "Failed to fetch facts".
+## How to create a GitHub repo and push (exact commands)
+1. Create a new empty repository on GitHub (via UI). Copy the repository HTTPS URL (e.g. `https://github.com/<org-or-user>/MyApp.git`).
+2. Run these commands locally:
 
-Files changed / created
+```bat
+cd /d "C:\Users\user\AndroidStudioProjects\MyApp"
+# if you haven't already initialized git
+# git init
+# make sure your changes are committed
+git remote add origin https://github.com/<your-user-or-org>/MyApp.git
+git branch -M main
+git push -u origin main
+# push your feature branch
+git push -u origin feature/fact-feed
+```
 
-- app/build.gradle.kts (deps added)
-- app/src/main/java/com/example/myapp/FactFeedActivity.java
-- app/src/main/java/com/example/myapp/FactAdapter.java
-- app/src/main/java/com/example/myapp/Fact.java
-- app/src/main/java/com/example/myapp/MainActivity.java (wired button)
-- app/src/main/res/layout/activity_fact_feed.xml
-- app/src/main/res/layout/item_fact.xml
-- app/src/main/res/layout/activity_main.xml (button added)
-- app/src/main/AndroidManifest.xml (activity registered)
+## Adding teammates & permissions
+- On GitHub: Repository -> Settings -> Manage access -> Invite collaborators (add GitHub usernames/emails).
+- Optionally: Create a team in an organization and add the repo to that team.
 
-Testing checklist
+## Code review & PR checklist (short)
+- Small, focused PR (preferably < 300 LOC)
+- Compile with `Build -> Make Project` (no errors)
+- Include a short description and testing steps in the PR
+- Add reviewers and address feedback before merging
 
-- In Android Studio: Sync Gradle -> Build -> Run app on device/emulator.
-- From the app main screen, tap "Open Fact Feed" to open the new activity.
-- The list should populate with quotes; if the network is unavailable you should see a Toast.
+## Testing notes
+- FactFeed requires network access. If using an emulator, ensure the emulator can access the internet.
+- If you see a Firebase warning at startup: that's expected unless `google-services.json` is added.
 
-Next steps / Handoff notes for other members
+## Files of interest for contributors
+- `app/src/main/java/com/example/studylog/MainActivity.java` - app navigation
+- `app/src/main/java/com/example/studylog/FactFeedFragment.java` - facts implementation
+- `app/src/main/java/com/example/studylog/FactAdapter.java` - RecyclerView adapter
+- `app/src/main/res/layout/fragment_fact_feed.xml` - fact fragment layout
+- `app/src/main/res/layout/item_fact.xml` - fact item layout
 
-- Member 2 (Task Log write): Add a new Activity `TaskWriteActivity` with a layout containing an EditText and Save button. Use SQLite/Firebase to write a task. Path suggestions: `app/src/main/java/com/example/myapp/TaskWriteActivity.java`.
-- Member 3 (Quick Contact & API 2): Add two buttons on main or a dedicated `ContactActivity` that send implicit intents (ACTION_DIAL, geo query) and a Volley StringRequest for API 2.
-- Member 4 (Profile): Create `ProfileActivity` using ActivityResultLauncher to capture a photo and display it; read user name from DB.
+---
 
-If you want, I can now:
-- Help sync Gradle remotely (if you give me permission to run gradlew in this environment and network is available), or
-- Walk you step-by-step through testing in Android Studio and pushing to GitHub, or
-- Implement one of the other features.
+If you'd like, I can also:
+- Create a `CONTRIBUTING.md` and a `.github/PULL_REQUEST_TEMPLATE.md` (I will add them now),
+- Create a simple GitHub Action workflow to run `./gradlew assembleDebug` on each PR (CI),
+- Remove the old neutralized `com.example.myapp` files and commit the cleanup.
 
-Contact
-
-If anything fails during Gradle sync or build, copy/paste the exact Gradle error or sync log and I'll debug further.
+Tell me which of those you'd like me to add (I will add `CONTRIBUTING.md` and PR template now).
