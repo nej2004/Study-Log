@@ -1,7 +1,6 @@
-package com.example.myapp;
+package com.example.studylog;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -10,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
@@ -25,7 +23,7 @@ public class FactFeedActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private FactAdapter adapter;
-    private List<Fact> facts = new ArrayList<>();
+    private List<FactModel> facts = new ArrayList<>();
     private ProgressBar progressBar;
 
     @Override
@@ -43,17 +41,16 @@ public class FactFeedActivity extends AppCompatActivity {
     }
 
     private void fetchFacts() {
-        progressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(android.view.View.VISIBLE);
         RequestQueue queue = Volley.newRequestQueue(this);
-        // Using a public simple API that returns an array of jokes/facts - use Chuck Norris jokes as example
-        String url = "https://api.sampleapis.com/futurama/quotes"; // returns an array of quotes
+        String url = "https://api.sampleapis.com/futurama/quotes";
 
-        JsonArrayRequest req = new JsonArrayRequest(Request.Method.GET, url, null,
+        JsonArrayRequest req = new JsonArrayRequest(url,
                 response -> {
                     parseFacts(response);
-                    progressBar.setVisibility(View.GONE);
+                    progressBar.setVisibility(android.view.View.GONE);
                 }, error -> {
-                    progressBar.setVisibility(View.GONE);
+                    progressBar.setVisibility(android.view.View.GONE);
                     Toast.makeText(this, "Failed to fetch facts", Toast.LENGTH_SHORT).show();
                 });
         queue.add(req);
@@ -65,11 +62,9 @@ public class FactFeedActivity extends AppCompatActivity {
             JSONObject o = arr.optJSONObject(i);
             if (o == null) continue;
             String text = o.optString("quote", "No text");
-            // sample image placeholder URL
             String img = "https://via.placeholder.com/150";
-            facts.add(new Fact(text, img));
+            facts.add(new FactModel(text, img));
         }
         adapter.notifyDataSetChanged();
     }
 }
-
