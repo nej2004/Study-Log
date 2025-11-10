@@ -13,10 +13,13 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
-    private final List<Fact> items;
+import com.example.studylog.FactModel;
+import com.example.studylog.R;
 
-    public FactAdapter(List<Fact> items) {
+public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
+    private final List<FactModel> items;
+
+    public FactAdapter(List<FactModel> items) {
         this.items = items;
     }
 
@@ -29,7 +32,7 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Fact fact = items.get(position);
+        FactModel fact = items.get(position);
         holder.text.setText(fact.getText());
         // Load placeholder image with Picasso
         Picasso.get()
@@ -50,8 +53,8 @@ public class FactAdapter extends RecyclerView.Adapter<FactAdapter.ViewHolder> {
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-            image = itemView.findViewById(R.id.factImage);
-            text = itemView.findViewById(R.id.factText);
+            image = itemView.findViewById(R.id.img_fact);
+            text = itemView.findViewById(R.id.tv_fact_text);
         }
     }
 }
