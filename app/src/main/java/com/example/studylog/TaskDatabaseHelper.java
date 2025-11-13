@@ -39,5 +39,33 @@ public class TaskDatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_CREATED_AT, System.currentTimeMillis());
         return db.insert(TABLE_TASKS, null, values);
     }
+
+    public java.util.List<Task> getAllTasks() {
+        java.util.List<Task> tasks = new java.util.ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        
+        android.database.Cursor cursor = db.query(
+                TABLE_TASKS,
+                null,
+                null,
+                null,
+                null,
+                null,
+                COLUMN_CREATED_AT + " DESC"
+        );
+        
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID));
+                String taskName = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TASK_NAME));
+                long createdAt = cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_CREATED_AT));
+                
+                tasks.add(new Task(id, taskName, createdAt));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        
+        return tasks;
+    }
 }
 

@@ -11,13 +11,17 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.studylog.R;
+import java.util.List;
 
 public class TaskLogFragment extends Fragment {
     private EditText etTaskName;
     private Button btnSaveTask;
     private TaskDatabaseHelper dbHelper;
+    private RecyclerView recyclerViewTasks;
+    private TaskAdapter taskAdapter;
 
     @Nullable
     @Override
@@ -31,9 +35,23 @@ public class TaskLogFragment extends Fragment {
 
         etTaskName = view.findViewById(R.id.etTaskName);
         btnSaveTask = view.findViewById(R.id.btnSaveTask);
+        recyclerViewTasks = view.findViewById(R.id.recyclerViewTasks);
+
         dbHelper = new TaskDatabaseHelper(requireContext());
 
+        // Setup RecyclerView
+        recyclerViewTasks.setLayoutManager(new LinearLayoutManager(requireContext()));
+
+        // Load and display tasks
+        loadTasks();
+
         btnSaveTask.setOnClickListener(v -> saveTask());
+    }
+
+    private void loadTasks() {
+        List<Task> tasks = dbHelper.getAllTasks();
+        taskAdapter = new TaskAdapter(tasks);
+        recyclerViewTasks.setAdapter(taskAdapter);
     }
 
     private void saveTask() {
@@ -49,6 +67,9 @@ public class TaskLogFragment extends Fragment {
         if (result != -1) {
             Toast.makeText(requireContext(), "Task Saved!", Toast.LENGTH_SHORT).show();
             etTaskName.setText("");
+
+            // Refresh the task list
+            loadTasks();
         } else {
             Toast.makeText(requireContext(), "Failed to save task", Toast.LENGTH_SHORT).show();
         }
