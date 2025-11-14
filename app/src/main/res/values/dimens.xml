@@ -1,0 +1,10 @@
+<resources>
+    <!-- Standard margins and padding -->
+    <dimen name="standard_margin">16dp</dimen>
+    <dimen name="small_padding">4dp</dimen>
+    <dimen name="button_margin_bottom">8dp</dimen>
+
+    <!-- Text sizes -->
+    <dimen name="api_result_text_size">18sp</dimen>
+</resources>
+
