@@ -1,3 +1,4 @@
+    <string name="api_result_current_time">Current Date/Time: %1$s</string>
 <resources>
     <string name="app_name">MyApp</string>
 
@@ -20,7 +21,7 @@
     <string name="world_time_api_url">https://worldtimeapi.org/api/timezone/Europe/London</string>
     <string name="backup_time_api_url">http://worldtimeapi.org/api/timezone/Europe/London</string>
     <string name="simple_time_api_url">https://timeapi.io/api/Time/current/zone?timeZone=Europe/London</string>
-
+    <string name="json_datetime_key">datetime</string>
     <string name="json_simple_time_key">dateTime</string>
-
 </resources>
+>>>>>>> 7089c6945d6823cd3538285930250ab647ca6835

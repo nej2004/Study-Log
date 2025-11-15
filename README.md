@@ -58,11 +58,4 @@ Next steps / Handoff notes for other members
 - Member 3 (Quick Contact & API 2): Add two buttons on main or a dedicated `ContactActivity` that send implicit intents (ACTION_DIAL, geo query) and a Volley StringRequest for API 2.
 - Member 4 (Profile): Create `ProfileActivity` using ActivityResultLauncher to capture a photo and display it; read user name from DB.
 
-If you want, I can now:
-- Help sync Gradle remotely (if you give me permission to run gradlew in this environment and network is available), or
-- Walk you step-by-step through testing in Android Studio and pushing to GitHub, or
-- Implement one of the other features.
 
-Contact
-
-If anything fails during Gradle sync or build, copy/paste the exact Gradle error or sync log and I'll debug further.
