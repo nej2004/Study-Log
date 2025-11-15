@@ -1,4 +1,4 @@
-    <string name="api_result_current_time">Current Date/Time: %1$s</string>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MyApp</string>
 
@@ -24,4 +24,3 @@
     <string name="json_datetime_key">datetime</string>
     <string name="json_simple_time_key">dateTime</string>
 </resources>
->>>>>>> 7089c6945d6823cd3538285930250ab647ca6835
