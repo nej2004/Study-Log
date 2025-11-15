@@ -19,6 +19,30 @@
             android:gravity="center"
             android:layout_marginBottom="16dp" />
 
+        <!-- Call and Find buttons (moved from activity_main) -->
+        <Button
+            android:id="@+id/btn_call_tutor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/button_margin_bottom"
+            android:text="@string/btn_call_tutor" />
+
+        <Button
+            android:id="@+id/btn_find_library"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/button_margin_bottom"
+            android:text="@string/btn_find_library" />
+
+        <!-- TextView to display API result (moved from activity_main) -->
+        <TextView
+            android:id="@+id/tv_api_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/api_result_default"
+            android:textSize="@dimen/api_result_text_size"
+            android:layout_marginBottom="12dp" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
