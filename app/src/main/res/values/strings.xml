@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">MyApp</string>
+
+    <!-- Button texts -->
+    <string name="btn_call_tutor">Call Tutor</string>
+    <string name="btn_find_library">Find Library</string>
+
+    <!-- API result messages -->
+    <string name="api_result_default">Loading current time…</string>
+    <string name="api_result_current_time">Current Date/Time: %1$s</string>
+    <string name="api_result_parse_error">Error parsing date/time</string>
+    <string name="api_result_network_error">Error fetching data</string>
+
+    <!-- Phone and map intents -->
+    <string name="tutor_phone_number">tel:+1234567890</string>
+    <string name="library_search_query">geo:0,0?q=library+near+me</string>
+    <string name="google_maps_package">com.google.android.apps.maps</string>
+
+    <!-- API -->
+    <string name="world_time_api_url">https://worldtimeapi.org/api/timezone/Europe/London</string>
+    <string name="backup_time_api_url">http://worldtimeapi.org/api/timezone/Europe/London</string>
+    <string name="simple_time_api_url">https://timeapi.io/api/Time/current/zone?timeZone=Europe/London</string>
+
+    <string name="json_simple_time_key">dateTime</string>
+
 </resources>

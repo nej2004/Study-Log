@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center_horizontal">
 
-    <TextView
+    <!-- Profile Picture -->
+    <ImageView
+        android:id="@+id/profileImageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_person_placeholder"
+        android:contentDescription="Profile Picture"
+        android:scaleType="centerCrop"
+        android:background="@drawable/image_border" />
+
+    <!-- Capture Button -->
+    <Button
+        android:id="@+id/btnCapturePhoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Profile/Camera Coming Soon"
-        android:layout_gravity="center"
-        android:textSize="18sp" />
+        android:text="Capture Photo" />
 
-</FrameLayout>
+    <!-- User Info -->
+    <TextView
+        android:id="@+id/tvUserInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:textSize="18sp"
+        android:text="User: Loading..." />
+
+</LinearLayout>
